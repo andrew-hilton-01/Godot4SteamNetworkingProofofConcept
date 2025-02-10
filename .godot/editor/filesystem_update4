@@ -1,1 +1,9 @@
+res://CharacterScenes/char.tscn
 res://Shaders/dither.gdshader
+res://WorldScenes/TestLevel.tscn
+res://MenuScenes/Main.tscn
+res://CharacterScenes/enemy.tscn
+res://Equippables/Item.tscn
+res://CharacterScenes/PlayerUI.tscn
+res://Equippables/fuse.tscn
+res://Equippables/battery.tscn
