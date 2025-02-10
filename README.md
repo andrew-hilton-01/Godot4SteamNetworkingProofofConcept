@@ -24,6 +24,10 @@
 - Hold space and use Source movement bhops to move around faster
 - Item collection area each player must bring items to and drop them without being eliminated by enemy AI is the blue glowing room, a label3d will show scrap needed to win when you drop items there.
 
+## screenshots
+![image](https://github.com/user-attachments/assets/544a4dfa-fadb-4b1c-a618-b8f9531e2538)
+![image](https://github.com/user-attachments/assets/fa9a7ed3-0406-4ac9-bf59-3083da9a51bd)
+
 ## attributions
 - QodotPlugin  
 QodotPlugin is licensed under the MIT License.  
