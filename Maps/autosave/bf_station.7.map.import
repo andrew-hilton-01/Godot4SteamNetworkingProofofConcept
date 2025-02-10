@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://cs6l0wmxtw0vp"
+path="res://.godot/imported/bf_station.7.map-d48ad270c3c91fe2fd2cb50fce1c2818.tres"
+
+[deps]
+
+source_file="res://Maps/autosave/bf_station.7.map"
+dest_files=["res://.godot/imported/bf_station.7.map-d48ad270c3c91fe2fd2cb50fce1c2818.tres"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://de0vvgxqsdswt"
+path="res://.godot/imported/straight_rail.3.map-1bdfd5c20e74c4be3b5498a425b7fcc6.tres"
+
+[deps]
+
+source_file="res://Maps/autosave/straight_rail.3.map"
+dest_files=["res://.godot/imported/straight_rail.3.map-1bdfd5c20e74c4be3b5498a425b7fcc6.tres"]
+
+[params]
+

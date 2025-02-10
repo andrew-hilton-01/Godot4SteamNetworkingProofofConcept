@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://d4mpw3x2rh4ah"]
+
+[ext_resource type="Script" path="res://CharacterScenes/CharacterScripts/enemyRefactor.gd" id="1_fc1gb"]
+[ext_resource type="Script" path="res://CharacterScenes/current_behavior.gd" id="3_p7pid"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_72ht8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vfbaf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpbcy"]
+albedo_color = Color(0.4878, 0, 0.00220035, 1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1xhhp"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("currentBehavior:text")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dp772"]
+radius = 4.5732
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_c3b1a"]
+radius = 1.02685
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_fc1gb")
+minspeed = null
+maxspeed = null
+damage = null
+isHostile = null
+CHASE_SPEED = null
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 6.0
+debug_enabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_72ht8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_vfbaf")
+skeleton = NodePath("../CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_dpbcy")
+
+[node name="currentBehavior" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12497, 0)
+script = ExtResource("3_p7pid")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_1xhhp")
+
+[node name="ChaseArea" type="Area3D" parent="."]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseArea"]
+shape = SubResource("CylinderShape3D_dp772")
+
+[node name="AttackArea" type="Area3D" parent="."]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("CylinderShape3D_c3b1a")
+
+[node name="AttackCD" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.4
+autostart = true
+
+[node name="temp" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0322921, -0.25648)
+light_energy = 3.691
+spot_range = 12.1762
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
+[connection signal="body_entered" from="ChaseArea" to="." method="_on_chase_area_body_entered"]
+[connection signal="body_exited" from="ChaseArea" to="." method="_on_chase_area_body_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="timeout" from="AttackCD" to="." method="_on_attack_cd_timeout"]

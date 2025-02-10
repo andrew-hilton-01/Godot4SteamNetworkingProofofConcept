@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhpb7gohciy6p"]
+
+[ext_resource type="PackedScene" uid="uid://bh1imrly764lp" path="res://Models/PSX_First_Person_Arms.glb" id="1_vbaox"]
+
+[node name="PSX_First_Person_Arms" instance=ExtResource("1_vbaox")]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

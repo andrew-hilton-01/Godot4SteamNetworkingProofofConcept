@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://cu06j4ygdn7nb"
+path="res://.godot/imported/SUBWAYMAIN.map-8d495f94f6c7089e40047361850bd955.tres"
+
+[deps]
+
+source_file="res://Maps/SUBWAYMAIN.map"
+dest_files=["res://.godot/imported/SUBWAYMAIN.map-8d495f94f6c7089e40047361850bd955.tres"]
+
+[params]
+

@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw0j2epidg2mw"]
+
+[ext_resource type="Script" path="res://item_preview.gd" id="1_wy31n"]
+[ext_resource type="PackedScene" uid="uid://wyxj46l8sxdr" path="res://CharacterScenes/char.tscn" id="2_7uxin"]
+[ext_resource type="Script" path="res://worldmodeldata.gd" id="2_qrh2h"]
+
+[sub_resource type="Resource" id="Resource_e2lrh"]
+script = ExtResource("2_qrh2h")
+position = Vector3(0, 0, 0)
+rotation = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="ItemPreview" type="MeshInstance3D"]
+script = ExtResource("1_wy31n")
+item_data = SubResource("Resource_e2lrh")
+
+[node name="1" parent="." instance=ExtResource("2_7uxin")]

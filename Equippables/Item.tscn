@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://co64v5podsuyq"]
+
+[ext_resource type="Script" path="res://InheritedScripts/items.gd" id="1_o15t4"]
+[ext_resource type="Texture2D" uid="uid://bp2t5nqsfb0ij" path="res://Icons/flashlight.png" id="2_whoei"]
+[ext_resource type="Script" path="res://Equippables/inititemsprite.gd" id="3_oboyn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b4o4k"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_grg62"]
+properties/0/path = NodePath(".:monitoring")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="Item" type="Area3D" groups=["Items"]]
+script = ExtResource("1_o15t4")
+canEquip = true
+canScrap = true
+scrapAmt = 50
+itemName = "Staff"
+canPickup = true
+icon = ExtResource("2_whoei")
+isWeapon = true
+
+[node name="Interactable" type="Node" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("SphereShape3D_b4o4k")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_grg62")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.731624, 0)
+pixel_size = 0.05
+billboard = 2
+shaded = true
+texture_filter = 0
+script = ExtResource("3_oboyn")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.73872, 0)
+light_color = Color(0, 0.743395, 0.743395, 1)
+spot_angle = 31.6687
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

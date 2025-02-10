@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl7ov5i4ob8ja"]
+
+[ext_resource type="PackedScene" uid="uid://co64v5podsuyq" path="res://Equippables/Item.tscn" id="1_y2p1y"]
+
+[node name="Flashlight" instance=ExtResource("1_y2p1y")]
+itemName = "Flashlight"

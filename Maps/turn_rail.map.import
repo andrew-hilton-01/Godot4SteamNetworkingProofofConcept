@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://cb6ns0byvyov6"
+path="res://.godot/imported/turn_rail.map-432cb7c6cd43025e4513c5c939cc7103.tres"
+
+[deps]
+
+source_file="res://Maps/turn_rail.map"
+dest_files=["res://.godot/imported/turn_rail.map-432cb7c6cd43025e4513c5c939cc7103.tres"]
+
+[params]
+

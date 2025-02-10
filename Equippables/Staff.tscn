@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://7ydlr14wg7he"]
+
+[ext_resource type="Script" path="res://InheritedScripts/items.gd" id="1_ylhy6"]
+[ext_resource type="Texture2D" uid="uid://bp2t5nqsfb0ij" path="res://Icons/flashlight.png" id="2_xpofd"]
+[ext_resource type="ArrayMesh" uid="uid://jko75on5k3tg" path="res://Viewmodels3rdPerson/staff_vm_3rd.res" id="3_v6tra"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b4o4k"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_grg62"]
+properties/0/path = NodePath(".:monitoring")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="Staff" type="Area3D"]
+script = ExtResource("1_ylhy6")
+canEquip = true
+itemName = "Staff"
+canPickup = true
+icon = ExtResource("2_xpofd")
+outside_vm_path = "res://Viewmodels3rdPerson/staff_vm_3rd.res"
+outside_vm_rotation = Vector3(0.5, 1.3, -0.7)
+outside_vm_scale = Vector3(0.07, 0.07, 0.07)
+isWeapon = true
+
+[node name="Interactable" type="Node" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("SphereShape3D_b4o4k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.4, 0)
+mesh = ExtResource("3_v6tra")
+skeleton = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_grg62")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

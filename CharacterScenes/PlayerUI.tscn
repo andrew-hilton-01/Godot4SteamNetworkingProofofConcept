@@ -1,0 +1,266 @@
+[gd_scene load_steps=8 format=3 uid="uid://rv4t1atq2tr8"]
+
+[ext_resource type="Script" path="res://CharacterScenes/CharacterScripts/ui_manager.gd" id="1_8ku27"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jssw"]
+bg_color = Color(0.584314, 0.596078, 0.643137, 0.584314)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 0.588235)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkbdw"]
+bg_color = Color(0.87451, 0.466667, 0.419608, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1lb8"]
+bg_color = Color(0.312267, 0.649519, 0.77904, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkksi"]
+bg_color = Color(0, 0, 0, 0.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgmul"]
+bg_color = Color(0, 0, 0, 0.219608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kuk7"]
+bg_color = Color(0, 0, 0, 0.427451)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 20
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8ku27")
+
+[node name="HPBar" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 0.9
+anchor_right = 0.25
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -5.0
+offset_right = 20.0
+offset_bottom = -5.0
+grow_vertical = 0
+
+[node name="HealthPanel" type="Panel" parent="HPBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2jssw")
+
+[node name="Health" type="ProgressBar" parent="HPBar/HealthPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_nkbdw")
+step = 0.1
+value = 100.0
+show_percentage = false
+
+[node name="InfoBar" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.75
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -5.0
+offset_right = -20.0
+offset_bottom = -5.0
+grow_vertical = 0
+
+[node name="InfoPanel" type="Panel" parent="InfoBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2jssw")
+
+[node name="Info" type="ProgressBar" parent="InfoBar/InfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_b1lb8")
+step = 0.1
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Info2" type="ProgressBar" parent="InfoBar/InfoPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_lkksi")
+step = 0.1
+value = 40.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Label" type="Label" parent="InfoBar/InfoPanel/Info2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shove            Jump"
+horizontal_alignment = 2
+
+[node name="Info3" type="ProgressBar" parent="InfoBar/InfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_jgmul")
+step = 0.1
+value = 10.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Hotbar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 1.0
+anchor_right = 0.65
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Slot1" type="Panel" parent="Hotbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2jssw")
+
+[node name="Selected" type="Panel" parent="Hotbar/Slot1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2kuk7")
+
+[node name="IconTexture" type="TextureRect" parent="Hotbar/Slot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Slot2" type="Panel" parent="Hotbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2jssw")
+
+[node name="Selected" type="Panel" parent="Hotbar/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2kuk7")
+
+[node name="IconTexture" type="TextureRect" parent="Hotbar/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Slot3" type="Panel" parent="Hotbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2jssw")
+
+[node name="Selected" type="Panel" parent="Hotbar/Slot3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2kuk7")
+
+[node name="IconTexture" type="TextureRect" parent="Hotbar/Slot3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Slot4" type="Panel" parent="Hotbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2jssw")
+
+[node name="Selected" type="Panel" parent="Hotbar/Slot4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2kuk7")
+
+[node name="IconTexture" type="TextureRect" parent="Hotbar/Slot4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1

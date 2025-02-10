@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EquippedItemWorldModel" load_steps=3 format=3 uid="uid://cl6en8yfga6dv"]
+
+[ext_resource type="Script" path="res://Equippables/EquippedItemWorldModel.gd" id="1_klnyq"]
+[ext_resource type="BoxMesh" uid="uid://x185lure2oiq" path="res://Viewmodels3rdPerson/default_3rd_person_viewmodel.tres" id="1_w7ull"]
+
+[resource]
+script = ExtResource("1_klnyq")
+name = &"Hands"
+position = Vector3(0.4, 1, -0.6)
+rotation = Vector3(25, 0, 0)
+scale = Vector3(0.1, 0.2, 1.17)
+mesh = ExtResource("1_w7ull")

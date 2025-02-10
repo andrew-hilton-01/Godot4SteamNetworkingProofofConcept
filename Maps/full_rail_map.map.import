@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://e1hvjf6kiriu"
+path="res://.godot/imported/full_rail_map.map-3fb47c8301ce8b6bcff7732b526c5ea9.tres"
+
+[deps]
+
+source_file="res://Maps/full_rail_map.map"
+dest_files=["res://.godot/imported/full_rail_map.map-3fb47c8301ce8b6bcff7732b526c5ea9.tres"]
+
+[params]
+

@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://wyxj46l8sxdr"]
+
+[ext_resource type="Script" path="res://CharacterScenes/CharacterScripts/PlayerController.gd" id="1_i1uut"]
+[ext_resource type="Script" path="res://CharacterScenes/CharacterScripts/viewmodel.gd" id="2_57c1b"]
+[ext_resource type="Script" path="res://CharacterScenes/CharacterScripts/inventorymanager.gd" id="2_d1sis"]
+[ext_resource type="PackedScene" uid="uid://bh1imrly764lp" path="res://Models/PSX_First_Person_Arms.glb" id="2_oa4m7"]
+[ext_resource type="Script" path="res://CharacterScenes/CharacterScripts/firstpersonanimationmanager.gd" id="3_tdu1r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bx60k"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xi157"]
+
+[node name="Player" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_i1uut")
+
+[node name="Head" type="Marker3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="PSX_First_Person_Arms" parent="CharacterBody3D/Head" instance=ExtResource("2_oa4m7")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.6, -1)
+script = ExtResource("3_tdu1r")
+
+[node name="POV" type="Camera3D" parent="CharacterBody3D/Head"]
+script = ExtResource("2_57c1b")
+
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Head/POV"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="CharacterBody3D/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.231711, -0.458463)
+light_energy = 9.222
+light_size = 1.0
+spot_range = 15.0306
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_bx60k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_bx60k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CollisionShape3D"]
+visible = false
+mesh = SubResource("CapsuleMesh_xi157")
+
+[node name="Inventory" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_d1sis")
+
+[node name="HotBar" type="HBoxContainer" parent="Inventory"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Inventory/HotBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Label2" type="Label" parent="Inventory/HotBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Label3" type="Label" parent="Inventory/HotBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Label4" type="Label" parent="Inventory/HotBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[connection signal="area_entered" from="CharacterBody3D/Area3D" to="CharacterBody3D" method="_on_area_3d_area_entered"]

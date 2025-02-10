@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnj5v017vuyi7"]
+
+[ext_resource type="PackedScene" uid="uid://co64v5podsuyq" path="res://Equippables/Item.tscn" id="1_gbmek"]
+[ext_resource type="Texture2D" uid="uid://bsianll2tvynr" path="res://Icons/battery.png" id="2_4eyf0"]
+[ext_resource type="Script" path="res://Equippables/battery.gd" id="2_kdajx"]
+
+[node name="Battery" instance=ExtResource("1_gbmek")]
+script = ExtResource("2_kdajx")
+itemName = "battery"
+icon = ExtResource("2_4eyf0")
+isWeapon = false
+isConsumable = true
+energyProvided = 20

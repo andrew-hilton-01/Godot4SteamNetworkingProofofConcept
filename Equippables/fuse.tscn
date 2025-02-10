@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqb5qn6pnkpnx"]
+
+[ext_resource type="PackedScene" uid="uid://co64v5podsuyq" path="res://Equippables/Item.tscn" id="1_or8jl"]
+[ext_resource type="Texture2D" uid="uid://b4d3iebnpkjmt" path="res://Icons/fuse.png" id="2_srtb7"]
+
+[node name="Fuse" instance=ExtResource("1_or8jl")]
+scrapAmt = 100
+itemName = "fuse"
+icon = ExtResource("2_srtb7")
+isWeapon = false
+isConsumable = true
+energyProvided = 10
+
+[node name="Sprite3D" parent="." index="4"]
+pixel_size = 0.001
